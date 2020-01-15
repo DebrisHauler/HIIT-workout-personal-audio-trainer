@@ -8,9 +8,9 @@ This was developed and tested in python 3.7 on Windows. It might work with older
 
 ## Getting started:
 
-you need python (I used 3.7)
+You need python (I used 3.7)
 
-you need ffmpeg, and your environment variables point to it. Instructions:
+You need ffmpeg, and your environment variables point to it. Instructions:
 
 [how to install ffmpeg](https://www.youtube.com/watch?v=qjtmgCb8NcE)
 
@@ -31,6 +31,8 @@ for anaconda users:
 ```cmd
 conda install -c conda-forge youtube_dl
 ```
+
+Download this repository as a zip file then extract it anwhere you like.
 
 Then just run HIITmixer.py
 
