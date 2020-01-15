@@ -39,9 +39,9 @@ Download this repository as a zip file then extract it anwhere you like.
 Then just run HIITmixer.py
 
 ## Example Routine:
-This is what my workout looks like on the treadmil, but you can adjust it for yourself!
+This is what my workout looks like on the treadmill, but you can adjust it for yourself!
 
-4 minutes jogging at 5 mph
+4ish minutes jogging at 5 mph
 
 1 minute sprinting at 10 mph
 
