@@ -6,7 +6,7 @@ Created on Sun Jan 12 01:02:06 2020
 from __future__ import unicode_literals
 import os, pydub, random, shutil, sys, time, youtube_dl
 
-seed = 69
+seed = 0
 
 WarmupTime = 240 * 1000 #4 minutes of warmup music
 Sets = 10 #10 high and low intensity segments
@@ -184,10 +184,10 @@ items += [MrsG.complete]
     
 print('compiling workout and adjusting volumes')
 for item in items:
-    playlist = playlist.append(pydub.effects.normalize(set_loudness(item, target_dBFS=-10),0.2))
+    playlist = playlist.append(set_loudness(pydub.effects.normalize(item, 0.1), target_dBFS=-17))
 
 print('normalizing audio')
-playlist = pydub.effects.normalize(playlist,0.2)
+playlist = pydub.effects.normalize(playlist,0.25)
 
 print('Workout length is '+DurationReadout(len(playlist)))
 print('Fire estimation is '+str(random.randint(7,10))+'/10')
