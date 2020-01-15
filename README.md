@@ -1,10 +1,10 @@
 # HIIT workout personal audio trainer
 
-HIIT stands for High Intensity Interval Training. You will repeatedly max out your speed and then recover as instructed by the voice. The workout routine can be applied to any kind of cardio such as running, cycling, or jumproping. HIIT needs to be somewhere between 20 - 45 minutes. 
+You want to get fit??!!!! Boy, you came to the right software!
 
 This script scrapes youtube and creates your own mp3 that you can take offline with you to the gym. A personal trainer and DJ will guide you through a HIIT workout and keep you entertained all the while.
 
-You want to get fit??!!!! Boy, you came to the right software!
+HIIT stands for High Intensity Interval Training. You will repeatedly max out your speed and then recover as instructed by the voice. The workout routine can be applied to any kind of cardio such as running, cycling, or jumproping. HIIT needs to be somewhere between 20 - 45 minutes.
 
 This was developed and tested in python 3.7 on Windows. It might work with older versions of python. So far, I've tested this once in the gym which helped me to adjust the workout. I will continue to update the code as I have more revelations in the gym.
 
