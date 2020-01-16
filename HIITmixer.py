@@ -183,7 +183,6 @@ HighIntensityGenerator = Segment('../HighIntensity_uris.txt')
 LowIntensityGenerator = Segment('../LowIntensity_uris.txt')
 CooldownGenerator = Segment('../Cooldown_uris.txt')
 
-playlist = pydub.AudioSegment.silent()
 items = [MrsG.introduction]
 print('generating warmup')
 items += WarmupGenerator.generate(WarmupTime)
@@ -199,10 +198,9 @@ print('generating cooldown')
 items += [MrsG.cooldown]
 items += CooldownGenerator.generate(CooldownTime - len(items[-1]))
 items += [MrsG.complete]
-
-
     
 print('compiling workout and adjusting volumes')
+playlist = pydub.AudioSegment.silent()
 for item in items:
     playlist = playlist.append(set_loudness(pydub.effects.normalize(item, 0.1), target_dBFS=-17))
 
@@ -218,16 +216,16 @@ print('Please wait')
 playlist.export(exportPath, format='mp3')
 print('HIIT-'+str(seed)+'.mp3 exported')
 
-time.sleep(2)
+time.sleep(1)
 print('\nHere are some configuration tips for next time.')
 for tip in tips:
-    time.sleep(0.5)
+    time.sleep(0.25)
     print(tip)
 
-time.sleep(2)
+time.sleep(1)
 print('\nHere are some fun facts about the HIIT mixer.')
 for factoid in factoids:
-    time.sleep(0.5)
+    time.sleep(0.25)
     print(factoid)
 
 print('\ndone')
