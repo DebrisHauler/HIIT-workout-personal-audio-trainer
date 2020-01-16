@@ -4,7 +4,7 @@ Created on Sun Jan 12 01:02:06 2020
 @author: DebrisHauler
 """
 from __future__ import unicode_literals
-import os, pydub, random, shutil, sys, time, youtube_dl
+import json, os, pydub, random, time, youtube_dl
 
 seed = 0
 
@@ -21,6 +21,7 @@ tips = ['Try changing the seed on line 9 to generate different audio mixes. Make
         ]
 
 factoids = ['The DJ never lets a song play more than 3 minutes. Audience got a short attention span around here.',
+            'Whenever information is downloaded from Youtube, it is stored in the Songs folder for next time.',
             'When revisiting a previous intensity, the DJ will resume where he left a song.',
             'Songs are only downloaded from youtube when they are not locally available and when the DJ needs them in the mix.',
             'Don\'t worry about messing up the mix by choosing crazy long songs. The DJ around here is pretty smart.',
@@ -42,16 +43,41 @@ class Downloader(object):
                 'restrictfilenames':True,
                 'forcefilename':True,
         }
+        self.UriDictionary = {}
+        if os.stat('UriDictionary(DO_NOT_EDIT).json').st_size > 0:
+            with open('UriDictionary(DO_NOT_EDIT).json', 'r') as f:
+                self.UriDictionary = json.load(f)
 
     def download(self, uri):
         with youtube_dl.YoutubeDL(self.download_options) as dl:
             dl.download([uri])
             
     def getFilename(self, uri):
-        with youtube_dl.YoutubeDL(self.download_options) as dl:
-            info = dl.extract_info(uri, download=False)
-            return dl.prepare_filename(info).rpartition('.')[0]+".mp3"
+        try:
+            if uri in self.UriDictionary:
+                if self.UriDictionary[uri] == None:
+                    return False
+                return self.UriDictionary[uri]+".mp3"
+            title = ''
+            with youtube_dl.YoutubeDL(self.download_options) as dl:
+                info = dl.extract_info(uri, download=False)
+                title = dl.prepare_filename(info).rpartition('.')[0]
+            self.UriDictionary[uri] = title
+            with open('UriDictionary(DO_NOT_EDIT).json', 'w') as f:
+                json.dump(self.UriDictionary, f)
+            return title+".mp3"
+        except:
+            self.UriDictionary[uri] = None
+            with open('UriDictionary(DO_NOT_EDIT).json', 'w') as f:
+                json.dump(self.UriDictionary, f)
+            return False
 
+# Song Directory
+if not os.path.exists('Songs'):
+    os.mkdir('Songs')
+if not os.path.exists('Output'):
+    os.mkdir('Output')
+os.chdir('Songs')
 DL = Downloader()
 
 class Song(object):
@@ -94,7 +120,8 @@ class Segment(object):
         self.songs = []
         with open(uris,'r') as f:
             for song_uri in f:
-                self.songs.append(Song(song_uri))
+                if(DL.getFilename(song_uri.rstrip('\n'))!=False):
+                    self.songs.append(Song(song_uri.rstrip('\n')))
         self.numSongs = len(self.songs)
         self.songIndices = list(range(self.numSongs))
         random.shuffle(self.songIndices)
@@ -150,13 +177,6 @@ def set_loudness(sound, target_dBFS):
 
 random.seed(seed)
 
-# Song Directory
-if not os.path.exists('Songs'):
-    os.mkdir('Songs')
-if not os.path.exists('Output'):
-    os.mkdir('Output')
-os.chdir('Songs')
-
 MrsG = TrainerVoice('../TrainerVoice/')
 WarmupGenerator = Segment('../Warmup_uris.txt')
 HighIntensityGenerator = Segment('../HighIntensity_uris.txt')
@@ -197,18 +217,6 @@ print('Exporting to '+exportPath)
 print('Please wait')
 playlist.export(exportPath, format='mp3')
 print('HIIT-'+str(seed)+'.mp3 exported')
-
-print("If you choose to keep the downloaded mp3s, your next mix will generate faster.")
-if input('Keep downloaded mp3 files? [y/n]:').upper() == 'N':
-    os.chdir('..')
-    print('removing downloaded songs')
-    try:
-        shutil.rmtree('Songs')
-    except:
-        print('Unexpected error:', sys.exc_info()[0])
-    print('downloaded songs removed')
-else:
-    print('downloaded songs stay in the Songs folder for next time')
 
 time.sleep(2)
 print('\nHere are some configuration tips for next time.')
