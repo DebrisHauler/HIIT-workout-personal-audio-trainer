@@ -48,7 +48,7 @@ Then just run HIITmixer.py
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 minutes recovering at 4 mph
 
-2ish minutes recovering at 4 mph
+2ish minutes cooling down at 4 mph
 
 This is what my (moderately fit white male 25yo) workout looks like on the treadmill, but you can adjust it for yourself! I would recommend first understanding what your speed is to exert 100% effort. As you repeat this workout, try getting increasing this speed up to 11 mph. If you get comfortable with that routine, then start reducing the recovery time, from 120 seconds to 90 seconds, and finally to 60 seconds if you are basically Usain Bolt.
 
