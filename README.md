@@ -44,9 +44,9 @@ Then just run HIITmixer.py
 
 10 times:
 
-\t1 minute sprinting at 11 mph
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 minute sprinting at 11 mph
 
-\t2 minutes recovering at 4 mph
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 minutes recovering at 4 mph
 
 2ish minutes recovering at 4 mph
 
