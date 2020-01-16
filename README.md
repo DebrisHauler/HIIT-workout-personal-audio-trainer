@@ -6,7 +6,7 @@ This script scrapes youtube and creates your own mp3 that you can take offline w
 
 HIIT stands for High Intensity Interval Training. You will repeatedly max out your speed and then recover as instructed by the voice. The workout routine can be applied to any kind of cardio such as running, cycling, or jumproping. HIIT needs to be somewhere between 20 - 45 minutes.
 
-This was developed and tested in python 3.7 on Windows. It might work with older versions of python. So far, I've tested this once in the gym which helped me to adjust the workout. I will continue to update the code as I have more revelations in the gym.
+This was developed and tested in python 3.7 on Windows. It might work with older versions of python. I am testing this in the gym and improving the algorithm as I see fit.
 
 ## Getting started:
 
@@ -39,49 +39,20 @@ Download this repository as a zip file then extract it anwhere you like.
 Then just run HIITmixer.py
 
 ## Example Routine:
-This is what my workout looks like on the treadmill, but you can adjust it for yourself!
 
 4ish minutes jogging at 5 mph
 
-1 minute sprinting at 10 mph
+10 times:
 
-2 minutes recovering at 4 mph
+  1 minute sprinting at 11 mph
 
-1 minute sprinting at 10 mph
+  2 minutes recovering at 4 mph
 
-2 minutes recovering at 4 mph
+2ish minutes recovering at 4 mph
 
-1 minute sprinting at 10 mph
+This is what my (moderately fit white male 25yo) workout looks like on the treadmill, but you can adjust it for yourself! I would recommend first understanding what your speed is to exert 100% effort. As you repeat this workout, try getting increasing this speed up to 11 mph. If you get comfortable with that routine, then start reducing the recovery time, from 120 seconds to 90 seconds, and finally to 60 seconds if you are basically Usain Bolt.
 
-2 minutes recovering at 4 mph
 
-1 minute sprinting at 10 mph
-
-2 minutes recovering at 4 mph
-
-1 minute sprinting at 10 mph
-
-2 minutes recovering at 4 mph
-
-1 minute sprinting at 10 mph
-
-2 minutes recovering at 4 mph
-
-1 minute sprinting at 10 mph
-
-2 minutes recovering at 4 mph
-
-1 minute sprinting at 10 mph
-
-2 minutes recovering at 4 mph
-
-1 minute sprinting at 10 mph
-
-2 minutes recovering at 4 mph
-
-1 minute sprinting at 10 mph
-
-4 minutes recovering at 4 mph
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
