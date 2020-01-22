@@ -44,9 +44,10 @@ class Downloader(object):
                 'forcefilename':True,
         }
         self.UriDictionary = {}
-        if os.stat('UriDictionary(DO_NOT_EDIT).json').st_size > 0:
-            with open('UriDictionary(DO_NOT_EDIT).json', 'r') as f:
-                self.UriDictionary = json.load(f)
+        if os.path.isfile('UriDictionary(DO_NOT_EDIT).json'):
+            if os.stat('UriDictionary(DO_NOT_EDIT).json').st_size > 0:
+                with open('UriDictionary(DO_NOT_EDIT).json', 'r') as f:
+                    self.UriDictionary = json.load(f)
 
     def download(self, uri):
         with youtube_dl.YoutubeDL(self.download_options) as dl:
