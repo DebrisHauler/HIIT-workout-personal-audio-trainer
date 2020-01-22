@@ -98,7 +98,7 @@ class Song(object):
             DL.download(self.uri)
             self.localFile = DL.getFilename(self.uri)
         if(self.data == None):
-            self.data = pydub.AudioSegment.from_mp3(str(os.getcwd())+"\\"+self.localFile)
+            self.data = pydub.AudioSegment.from_mp3(str(os.getcwd())+"/"+self.localFile)
         self.length = len(self.data)
         self.playhead = random.randint(0,self.length-101)
         self.cutoff = min(self.playhead + (3*60*1000), self.length)
