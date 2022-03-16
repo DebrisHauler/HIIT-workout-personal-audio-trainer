@@ -25,13 +25,16 @@ for anaconda users:
 conda install -c conda-forge pydub
 ```
 you need youtube_dl:
-
 ```cmd
 pip install youtube_dl
 ```
 for anaconda users:
 ```cmd
 conda install -c conda-forge youtube_dl
+```
+If/when youtube changes and you get python errors try updating youtube_dl:
+```cmd
+pip install -U youtube_dl
 ```
 
 Download this repository as a zip file then extract it anwhere you like.
